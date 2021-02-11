@@ -44,6 +44,10 @@ html::-webkit-scrollbar{
     color: #944707 !important;
     margin-left: 5px !important;
 }
+
+.activee{
+    color: #db6d13 !important;
+}
 /* 
 ---------------------------------------------------------------------------------------------------------------------------
 
