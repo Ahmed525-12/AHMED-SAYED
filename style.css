@@ -48,6 +48,8 @@ html::-webkit-scrollbar{
 .activee{
     color: #db6d13 !important;
 }
+
+
 /* 
 ---------------------------------------------------------------------------------------------------------------------------
 
@@ -105,6 +107,9 @@ html::-webkit-scrollbar{
 .text-p{
     color: #cacaca;
 }
+.active{
+  color: #db6d13 !important;
+}
 /* 
 ---------------------------------------------------------------------------------------------------------------------------
 
@@ -112,6 +117,60 @@ html::-webkit-scrollbar{
 
 ------------------------------------------------------------------------------------------------------------------------------- */
 
+
+
+/* ----------------------------------------------------------------- a icon -------------------------------------------- */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+.abtn-flip:hover{
+  text-decoration: none;
+}
+.btn-outline {
+  font-weight: bold;
+  background-color: transparent;
+  color: #db6d13;
+  border: 3px solid #db6d13;
+  border-width: 3px;
+  padding: 0;
+  outline: 0;
+  display: inline-flex;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+.btn-outline i, .btn-outline span {
+  width: 100%;
+  display: block;
+  padding: 0.5rem;
+  margin: 0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+.btn-outline i {
+  margin-left: -100%;
+  transition: margin-left 300ms ease-in-out;
+  font-size: 26px;
+}
+.btn-outline:hover {
+  color: #ffffff;
+  background-color: #db6d13;
+}
+.btn-outline:hover i {
+  margin-left: 0;
+}
+.btn-outline.default {
+  color: #ffffff;
+  border-color: #db6d13;
+  border-radius: 5px;
+}
+.btn-outline.default:hover {
+  color: #ffffff;
+  background-color: #db6d13;
+}
+.btn-outline.default:focus {
+  box-shadow: 0 0 0 0.3rem rgba(64, 64, 64, 0.7);
+}
+
+/* ----------------------------------------------------------------- a icon -------------------------------------------- */
 
 /* 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -275,7 +334,7 @@ content: '';
     position: relative;
     z-index: 2;  
 }
-/* .h4-skills::after{
+.h4-skills::after{
     content: '';
     width: 50%;
     height: 3px;
@@ -284,7 +343,7 @@ content: '';
     bottom: -20px;
     left: 0;
 
-} */
+}
 
 .h4-skills::before{
     content: '';
@@ -595,62 +654,197 @@ background-attachment: fixed;
     bottom: 0;
     z-index: 5000;
   }
+  @import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
 
-  .spinner {
+  .content {
+    width: 300px;
+    height: 300px;
     position: relative;
-    margin: auto;
-    box-sizing: border-box;
-    background-clip: padding-box;
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-    border: 4px solid rgba(255, 255, 255, 0.1);
-    -webkit-mask: linear-gradient(rgba(0, 0, 0, 0.1), #000000 90%);
-    transform-origin: 50% 60%;
-    transform: perspective(200px) rotateX(66deg);
-    animation: spinner-wiggle 0.5s 0.5s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  .spinner:before,
-  .spinner:after {
+  .content .planet {
+    width: 65%;
+    height: 65%;
+    background-color: #546c8c;
+    border-radius: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    transform-origin: center center;
+    box-shadow: inset 2px -10px 0px rgba(0, 0, 0, 0.1);
+    animation: planet 5s ease infinite alternate;
+    /* planet ring */
+    /* to cover the back of the ring */
+    /* planet spots */
+  }
+  @keyframes planet {
+    0% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(-10deg);
+    }
+  }
+  .content .planet .ring {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    background-color: #bacbd9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: 33% center;
+    box-shadow: 2px -10px 0px rgba(0, 0, 0, 0.1), inset -5px -10px 0px rgba(0, 0, 0, 0.1);
+    animation: ring 3s ease infinite;
+    /* small ball */
+    /* inner ring */
+  }
+  @keyframes ring {
+    0% {
+      transform: rotateX(110deg) rotateZ(0deg) translate(-50px, 5px);
+    }
+    100% {
+      transform: rotateX(110deg) rotateZ(360deg) translate(-50px, 5px);
+    }
+  }
+  .content .planet .ring:before {
     content: "";
     position: absolute;
-    margin: -4px;
-    box-sizing: inherit;
-    width: inherit;
-    height: inherit;
-    border-radius: inherit;
-    opacity: .05;
-    border: inherit;
-    border-color: transparent;
-    animation: spinner-spin 1.2s cubic-bezier(0.6, 0.2, 0, 0.8) infinite, spinner-fade 1.2s linear infinite;
+    width: 10px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: #7ea1bf;
+    z-index: 2;
+    left: calc(0px - 5px);
+    box-shadow: inset -3px 3px 0px rgba(0, 0, 0, 0.2);
   }
-  
-  .spinner:before {
-    border-top-color: #0b4f6dbb;
+  .content .planet .ring:after {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 100%;
+    background-color: #7ea1bf;
+    box-shadow: inset 2px -10px 0px rgba(0, 0, 0, 0.1);
   }
-  
-  .spinner:after {
-    border-top-color: #db6d13;
-    animation-delay: 0.3s;
+  .content .planet .cover-ring {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    border-bottom-left-radius: 80%;
+    border-bottom-right-radius: 80%;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    transform: translate(0px, -17px);
+    background-color: #546c8c;
+    z-index: 2;
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
   }
-  
-  @keyframes spinner-spin {
+  .content .planet .spots {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 2;
+  }
+  .content .planet .spots span {
+    width: 30px;
+    height: 30px;
+    background-color: #3c4359;
+    position: absolute;
+    border-radius: 100%;
+    box-shadow: inset -2px 3px 0px rgba(0, 0, 0, 0.3);
+    animation: dots 5s ease infinite alternate;
+  }
+  @keyframes dots {
+    0% {
+      box-shadow: inset -3px 3px 0px rgba(0, 0, 0, 0.3);
+    }
     100% {
-      transform: rotate(360deg);
+      box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.3);
     }
   }
-  @keyframes spinner-fade {
-    20% {
-      opacity: .1;
+  .content .planet .spots span:nth-child(1) {
+    top: 20px;
+    right: 50px;
+  }
+  .content .planet .spots span:nth-child(2) {
+    top: 40px;
+    left: 50px;
+    width: 15px;
+    height: 15px;
+  }
+  .content .planet .spots span:nth-child(3) {
+    top: 80px;
+    left: 20px;
+    width: 25px;
+    height: 25px;
+  }
+  .content .planet .spots span:nth-child(4) {
+    top: 80px;
+    left: 90px;
+    width: 40px;
+    height: 40px;
+  }
+  .content .planet .spots span:nth-child(5) {
+    top: 160px;
+    left: 70px;
+    width: 15px;
+    height: 15px;
+  }
+  .content .planet .spots span:nth-child(6) {
+    top: 165px;
+    left: 125px;
+    width: 10px;
+    height: 10px;
+  }
+  .content .planet .spots span:nth-child(7) {
+    top: 90px;
+    left: 150px;
+    width: 15px;
+    height: 15px;
+  }
+  .content p {
+    color: #bacbd9;
+    font-size: 14px;
+    z-index: 2;
+    position: absolute;
+    bottom: -20px;
+    font-family: "Roboto Mono", monospace;
+    animation: text 4s ease infinite;
+    width: 100px;
+    text-align: center;
+  }
+  @keyframes text {
+    0% {
+      transform: translateX(-30px);
+      letter-spacing: 0px;
+      color: #bacbd9;
     }
-    40% {
-      opacity: 1;
+    25% {
+      letter-spacing: 3px;
+      color: #7ea1bf;
     }
-    60% {
-      opacity: .1;
+    50% {
+      transform: translateX(30px);
+      letter-spacing: 0px;
+      color: #bacbd9;
+    }
+    75% {
+      letter-spacing: 3px;
+      color: #7ea1bf;
+    }
+    100% {
+      transform: translateX(-30px);
+      letter-spacing: 0px;
+      color: #bacbd9;
     }
   }
-
 
 /* 
 ---------------------------------------------------------------------------------------------------------------------------
